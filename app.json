@@ -23,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.goutamkota.praticeapp"
     },
     "web": {
       "bundler": "metro",
@@ -35,6 +36,11 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b2288516-16b5-4e45-b238-b4ab4135df4a"
+      }
     }
   }
 }

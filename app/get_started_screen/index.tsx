@@ -1,12 +1,11 @@
 import { useRouter } from 'expo-router';
 import { MoveRight } from 'lucide-react-native';
-import { View, Text, TouchableOpacity, StatusBar, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 export default function GetStartedPage() {
     const router = useRouter();
     return (
         <View style={styles.container}>
-            <StatusBar barStyle="light-content" backgroundColor="#000" />
             <Text style={styles.title}>Invest in What's Next.</Text>
             <TouchableOpacity style={styles.button} className='w-100 gap-2 flex flex-row item-center justify-center' onPress={() => router.push('/invitation_screen')}>
                 <Text style={styles.buttonText}>
@@ -24,15 +23,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#000',
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
         alignItems: 'center',
-        padding: 20,
+        padding: 15,
     },
     title: {
         color: '#fff',
-        fontSize: 32,
+        fontSize: 40,
         fontWeight: 'bold',
-        textAlign: 'center',
         marginBottom: 40,
         fontFamily: 'TiemposText-Regular',
     },

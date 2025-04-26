@@ -60,10 +60,11 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     input: {
+        height: 50,
+        paddingHorizontal: 20,
         borderColor: '#333',
         borderWidth: 1,
         color: '#fff',
-        paddingHorizontal: 10,
         marginBottom: 20,
     },
     button: {

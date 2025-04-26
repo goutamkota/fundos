@@ -1,10 +1,10 @@
-import { useRouter } from 'expo-router';
-import { MoveRight } from 'lucide-react-native';
+import { RelativePathString, useRouter } from 'expo-router';
+import { Dock, MoveRight } from 'lucide-react-native';
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
 
 export default function PhoneNumberScreen() {
-    const [phoneNumber, setPhoneNumber] = useState('');
+    const [aadhaar, setAadhaar] = useState('');
     const router = useRouter();
     return (
         <KeyboardAvoidingView
@@ -12,27 +12,26 @@ export default function PhoneNumberScreen() {
             style={styles.container}
         >
             <View>
-                <Text style={styles.title}>Enter phone number</Text>
+                <Text style={styles.title}>Enter your Aadhar Card</Text>
                 <Text style={styles.subtitle}>
-                    Your number helps us verify your identity and keep your account secure.
+                    Provide your Aadhar for verification. Your details are safe.
                 </Text>
                 <View style={styles.inputContainer}>
-                    <Text style={styles.prefix}>+91</Text>
-                    <View style={styles.divider} />
                     <TextInput
                         style={styles.input}
-                        value={phoneNumber}
-                        onChangeText={setPhoneNumber}
-                        placeholder="9876543210"
+                        value={aadhaar}
+                        onChangeText={setAadhaar}
                         placeholderTextColor="#888"
                         keyboardType="phone-pad"
                         returnKeyType="done"
+                        placeholder="Enter your aadhaar number"
                         maxLength={10}
                     />
+                    <Text style={styles.prefix}><Text><Dock strokeWidth={1} color='white' size={25} /></Text></Text>
                 </View>
-                <TouchableOpacity className='flex flex-row justify-center gap-2' style={[styles.button, phoneNumber.length === 10 ? styles.buttonActive : null]} onPress={() => router.push('/otp_input_screen')}>
-                    <Text style={[styles.buttonText, phoneNumber.length === 10 ? styles.buttonActiveText : null]}>Proceed</Text>
-                    <Text><MoveRight strokeWidth={1} color={phoneNumber.length === 10 ? "black" : 'white'} size={25} /></Text>
+                <TouchableOpacity disabled={aadhaar.length < 10} className='flex flex-row justify-center gap-2' style={[styles.button, (aadhaar.length >= 10) ? styles.buttonActive : null]} onPress={() => router.push('/email_screen' as RelativePathString)}>
+                    <Text style={[styles.buttonText, (aadhaar.length >= 10) ? styles.buttonActiveText : null]}>Next</Text>
+                    <Text><MoveRight strokeWidth={1} color={(aadhaar.length >= 10) ? "black" : 'white'} size={25} /></Text>
                 </TouchableOpacity>
             </View>
         </KeyboardAvoidingView>
@@ -57,6 +56,11 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         textAlign: 'left',
     },
+    codeLabel: {
+        color: '#fff',
+        fontSize: 14,
+        marginBottom: 5,
+    },
     inputContainer: {
         flexDirection: 'row',
         width: '100%',
@@ -70,11 +74,6 @@ const styles = StyleSheet.create({
         color: '#fff',
         paddingHorizontal: 20,
         fontSize: 16,
-    },
-    divider: {
-        width: 1,
-        height: '60%',
-        backgroundColor: '#888',
     },
     input: {
         flex: 1,

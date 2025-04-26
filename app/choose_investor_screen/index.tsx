@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     checkbox: {
-        transform: [{ scale: 2 }],
+        borderRadius: 0
     },
     checkCont: {
         flexDirection: 'row',
